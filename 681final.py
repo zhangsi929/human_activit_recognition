@@ -128,20 +128,20 @@ pred_y_svm_poly = clf_svm_poly.decision_function(pca_test_x)
 
 fpr_svm_poly = dict()
 tpr_svm_poly = dict()
-roc_auc_svm_ploy = dict()
+roc_auc_svm_poly = dict()
 
 for i in range(6):
-    fpr_svm_ploy[i], tpr_svm_ploy[i], _ = roc_curve(test_y_bi[:, i], pred_y_svm_poly[:, i])
-    roc_auc_svm_ploy[i] = auc(fpr_svm_ploy[i], tpr_svm_ploy[i])
+    fpr_svm_poly[i], tpr_svm_poly[i], _ = roc_curve(test_y_bi[:, i], pred_y_svm_poly[:, i])
+    roc_auc_svm_poly[i] = auc(fpr_svm_poly[i], tpr_svm_poly[i])
 font = {'size'   : 22}
 plt.rc('font', **font) 
 plt.figure(figsize=(15,15))
-line1,=plt.plot(fpr_svm_ploy[0],tpr_svm_ploy[0],'r--',label=graph_label[0] + ' auc= ' + str(roc_auc_svm_ploy[0]))
-line2,=plt.plot(fpr_svm_ploy[1],tpr_svm_ploy[1],'b--',label=graph_label[1]+ ' auc= ' + str(roc_auc_svm_ploy[1]))
-line3,=plt.plot(fpr_svm_ploy[2],tpr_svm_ploy[2],'g--',label=graph_label[2]+ ' auc= ' + str(roc_auc_svm_ploy[2]))
-line4,=plt.plot(fpr_svm_ploy[3],tpr_svm_ploy[3],'r+',label=graph_label[3]+ ' auc= ' + str(roc_auc_svm_ploy[3]))
-line5,=plt.plot(fpr_svm_ploy[4],tpr_svm_ploy[4],'b+',label=graph_label[4]+ ' auc= ' + str(roc_auc_svm_ploy[4]))
-line6,=plt.plot(fpr_svm_ploy[5],tpr_svm_ploy[5],'g+',label=graph_label[5]+ ' auc= ' + str(roc_auc_svm_ploy[5]))
+line1,=plt.plot(fpr_svm_poly[0],tpr_svm_poly[0],'r--',label=graph_label[0] + ' auc= ' + str(roc_auc_svm_poly[0]))
+line2,=plt.plot(fpr_svm_poly[1],tpr_svm_poly[1],'b--',label=graph_label[1]+ ' auc= ' + str(roc_auc_svm_poly[1]))
+line3,=plt.plot(fpr_svm_poly[2],tpr_svm_poly[2],'g--',label=graph_label[2]+ ' auc= ' + str(roc_auc_svm_poly[2]))
+line4,=plt.plot(fpr_svm_poly[3],tpr_svm_poly[3],'r+',label=graph_label[3]+ ' auc= ' + str(roc_auc_svm_poly[3]))
+line5,=plt.plot(fpr_svm_poly[4],tpr_svm_poly[4],'b+',label=graph_label[4]+ ' auc= ' + str(roc_auc_svm_poly[4]))
+line6,=plt.plot(fpr_svm_poly[5],tpr_svm_poly[5],'g+',label=graph_label[5]+ ' auc= ' + str(roc_auc_svm_poly[5]))
 plt.xlabel('fpr',fontsize=22)
 plt.ylabel('tpr',fontsize=22)
 plt.title('roc of different status SVM-poly',fontsize=22)
@@ -190,7 +190,7 @@ plt.figure(figsize=(15,15))
 labels = ['linear', 'rbf', 'poly']
 line1,=plt.plot(fpr_svm[4],tpr_svm[4],'r--',label=labels[0] + ', auc= ' + str(roc_auc_svm[4]))
 line2,=plt.plot(fpr_svm_rbf[4],tpr_svm_rbf[4],'b--',label=labels[1]+ ', auc= ' + str(roc_auc_svm_rbf[4]))
-line3,=plt.plot(fpr_svm_ploy[4],tpr_svm_ploy[4],'g--',label=labels[2]+ ', auc= ' + str(roc_auc_svm_ploy[4]))
+line3,=plt.plot(fpr_svm_poly[4],tpr_svm_poly[4],'g--',label=labels[2]+ ', auc= ' + str(roc_auc_svm_poly[4]))
 plt.xlabel('fpr',fontsize=22)
 plt.ylabel('tpr',fontsize=22)
 plt.title('roc of STANDING with different kernel',fontsize=22)
@@ -203,7 +203,7 @@ plt.show()
 # In[219]:
 
 
-roc_auc_svm_ploy
+roc_auc_svm_poly
 
 
 # In[200]:
@@ -625,6 +625,7 @@ plt.show()
 confusion_matrix(test_y, rf_pred_y)
 
 import matplotlib.pyplot as plt
+from mlxtend.plotting import plot_confusion_matrix
 
 font = {'size'   : 12}
 plt.rc('font', **font) 
